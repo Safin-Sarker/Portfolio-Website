@@ -66,16 +66,24 @@ export default function About() {
               </div>
 
               <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-purple-500 transition-colors duration-300">
-                <div className="flex items-center gap-4">
-                  <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-lg">
+                <div className="flex items-start gap-4">
+                  <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-3 rounded-lg flex-shrink-0">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white">Education</h4>
-                    <p className="text-gray-600 dark:text-gray-400">M.Sc. Computer Science (Data Science)</p>
-                    <p className="text-sm text-purple-400">University of Stavanger</p>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Education</h4>
+                    <div className="space-y-2">
+                      <div>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">M.Sc. Computer Science (Data Science)</p>
+                        <p className="text-xs text-purple-400">University of Stavanger, Norway</p>
+                      </div>
+                      <div>
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">B.Sc. in Computer Science</p>
+                        <p className="text-xs text-purple-400">American International University Bangladesh</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -97,28 +105,6 @@ export default function About() {
               </div>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6"
-          >
-            {[
-              { number: '5+', label: 'Years Experience' },
-              { number: '15+', label: 'Projects Completed' },
-              { number: '10+', label: 'Technologies' },
-              { number: '3', label: 'Languages' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center p-6 bg-gray-100 dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-700">
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600 dark:text-gray-400 text-sm">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>
