@@ -1,6 +1,6 @@
 # Portfolio Website
 
-An eye-catching portfolio website with a RAG-powered AI chatbot built with Next.js, OpenAI, and ChromaDB.
+An portfolio website with a RAG-powered AI chatbot built with Next.js, OpenAI, and ChromaDB.
 
 ## Features
 

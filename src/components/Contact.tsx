@@ -63,7 +63,7 @@ export default function Contact() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
@@ -82,7 +82,7 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="space-y-6"
               >
@@ -118,7 +118,7 @@ export default function Contact() {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Connect With Me</h3>
@@ -167,7 +167,7 @@ export default function Contact() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.6 }}
               className="bg-white dark:bg-gray-900 p-8 rounded-lg border border-gray-300 dark:border-gray-700 text-center"
             >

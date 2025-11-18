@@ -10,7 +10,7 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5 }}
           className="max-w-4xl mx-auto"
         >
@@ -24,7 +24,7 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-1 rounded-2xl">
@@ -46,7 +46,7 @@ export default function About() {
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.5, delay: 0.4 }}
               className="space-y-4"
             >
@@ -101,7 +101,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6"
           >

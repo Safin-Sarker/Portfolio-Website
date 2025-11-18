@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const experiences = [
   {
@@ -67,13 +68,22 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Animate timeline height based on scroll
+  const timelineHeight = useTransform(scrollYProgress, [0, 0.8], ["0%", "100%"]);
+
   return (
-    <section id="experience" className="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+    <section id="experience" ref={containerRef} className="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
@@ -84,18 +94,43 @@ export default function Experience() {
 
           <div className="max-w-4xl mx-auto">
             <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 to-purple-600"></div>
+              {/* Static background timeline line */}
+              <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gray-300 dark:bg-gray-700"></div>
 
-              {experiences.map((exp, index) => (
+              {/* Animated timeline line that draws on scroll */}
+              <motion.div
+                className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600 origin-top"
+                style={{ height: timelineHeight }}
+              ></motion.div>
+
+              {experiences.map((exp, index) => {
+                const isLeft = index % 2 === 0;
+
+                return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  initial={{
+                    opacity: 0,
+                    x: isLeft ? -200 : 200,
+                    scale: 0.8,
+                    rotate: isLeft ? -5 : 5
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    rotate: 0
+                  }}
+                  viewport={{ once: false, margin: "-50px", amount: 0.3 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.15,
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }}
                   className={`mb-12 flex flex-col md:flex-row items-start ${
-                    index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                    isLeft ? 'md:flex-row-reverse' : ''
                   }`}
                 >
                   {/* Content */}
@@ -141,10 +176,38 @@ export default function Experience() {
                     </div>
                   </div>
 
-                  {/* Timeline dot */}
-                  <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full border-4 border-gray-100 dark:border-gray-800"></div>
+                  {/* Timeline dot with pulse animation */}
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                      duration: 0.5,
+                      delay: index * 0.15 + 0.4,
+                      type: "spring",
+                      stiffness: 200
+                    }}
+                    className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 z-10"
+                  >
+                    <motion.div
+                      animate={{
+                        boxShadow: [
+                          "0 0 0 0 rgba(147, 51, 234, 0.7)",
+                          "0 0 0 10px rgba(147, 51, 234, 0)",
+                          "0 0 0 0 rgba(147, 51, 234, 0)"
+                        ]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.15 + 0.8
+                      }}
+                      className="w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full border-4 border-gray-100 dark:border-gray-800"
+                    ></motion.div>
+                  </motion.div>
                 </motion.div>
-              ))}
+              );
+              })}
             </div>
           </div>
         </motion.div>

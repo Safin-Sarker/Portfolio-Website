@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import TiltCard from './TiltCard';
 
 const projects = [
   {
@@ -51,7 +52,7 @@ export default function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
@@ -69,12 +70,12 @@ export default function Projects() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 overflow-hidden group ${
-                  project.featured ? 'md:col-span-2 lg:col-span-1' : ''
-                }`}
+                className={project.featured ? 'md:col-span-2 lg:col-span-1' : ''}
               >
+                <TiltCard className="h-full bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 overflow-hidden group">
+
                 <div className="p-6">
                   {project.featured && (
                     <div className="mb-3">
@@ -136,6 +137,7 @@ export default function Projects() {
                     </svg>
                   </a>
                 </div>
+                </TiltCard>
               </motion.div>
             ))}
           </div>

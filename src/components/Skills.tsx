@@ -114,7 +114,7 @@ export default function Skills() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
@@ -131,7 +131,7 @@ export default function Skills() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-8"
             >
@@ -154,8 +154,9 @@ export default function Skills() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 border-2 border-blue-200 dark:border-blue-500/30 hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
                 >
                   <div className="flex items-center gap-3 mb-4">
@@ -166,12 +167,22 @@ export default function Skills() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, i) => (
-                      <span
+                      <motion.span
                         key={i}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: (index * 0.1) + (i * 0.05),
+                          type: "spring",
+                          stiffness: 200
+                        }}
+                        whileHover={{ scale: 1.1, y: -2 }}
                         className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition-all duration-300 cursor-default"
                       >
                         {skill}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </motion.div>
@@ -184,7 +195,7 @@ export default function Skills() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.5 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mb-8"
             >
@@ -207,8 +218,9 @@ export default function Skills() {
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false, amount: 0.3 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
                   className="bg-gray-100 dark:bg-gray-800 rounded-lg p-6 border-2 border-purple-200 dark:border-purple-500/30 hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20"
                 >
                   <div className="flex items-center gap-3 mb-4">
@@ -219,12 +231,22 @@ export default function Skills() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, i) => (
-                      <span
+                      <motion.span
                         key={i}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: false, amount: 0.5 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: (index * 0.1) + (i * 0.05),
+                          type: "spring",
+                          stiffness: 200
+                        }}
+                        whileHover={{ scale: 1.1, y: -2 }}
                         className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-600 hover:text-white transition-all duration-300 cursor-default"
                       >
                         {skill}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </motion.div>

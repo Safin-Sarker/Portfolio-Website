@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Hero() {
   return (
@@ -21,9 +22,23 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-4">
+            <h1 className="text-5xl md:text-7xl font-bold mb-4 min-h-[80px] md:min-h-[100px]">
               <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                MD Safin Sarker
+                <TypeAnimation
+                  sequence={[
+                    'MD Safin Sarker',
+                    2000,
+                    'Full Stack Developer',
+                    2000,
+                    'AI Specialist',
+                    2000,
+                    'Problem Solver',
+                    2000,
+                  ]}
+                  wrapper="span"
+                  speed={50}
+                  repeat={Infinity}
+                />
               </span>
             </h1>
           </motion.div>
@@ -54,18 +69,22 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="flex flex-wrap gap-4 justify-center mb-12"
           >
-            <a
+            <motion.a
               href="#contact"
-              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
               Get in Touch
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#projects"
-              className="px-8 py-3 border-2 border-purple-500 rounded-full font-semibold hover:bg-purple-500/10 transition-all duration-300 transform hover:scale-105"
+              className="px-8 py-3 border-2 border-purple-500 rounded-full font-semibold hover:bg-purple-500/10 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
               View Projects
-            </a>
+            </motion.a>
           </motion.div>
 
           <motion.div

@@ -168,12 +168,16 @@ export default function ChatBot() {
                 </motion.div>
               )}
 
-              {messages.map((message) => (
-                <div
+              {messages.map((message, index) => (
+                <motion.div
                   key={message.id}
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
                   className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
-                  <div
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
                     className={`max-w-[80%] p-3 rounded-lg ${
                       message.role === 'user'
                         ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
@@ -211,20 +215,36 @@ export default function ChatBot() {
                         {message.content}
                       </ReactMarkdown>
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                </motion.div>
               ))}
 
               {isLoading && (
-                <div className="flex justify-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="flex justify-start"
+                >
                   <div className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg">
                     <div className="flex space-x-2">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                      <div className="w-2 h-2 bg-purple-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                      <motion.div
+                        className="w-2 h-2 bg-purple-500 rounded-full"
+                        animate={{ y: [-3, 3, -3] }}
+                        transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-purple-500 rounded-full"
+                        animate={{ y: [-3, 3, -3] }}
+                        transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                      />
+                      <motion.div
+                        className="w-2 h-2 bg-purple-500 rounded-full"
+                        animate={{ y: [-3, 3, -3] }}
+                        transition={{ duration: 0.6, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                      />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               <div ref={messagesEndRef} />
@@ -242,15 +262,24 @@ export default function ChatBot() {
                   disabled={isLoading}
                   autoFocus
                 />
-                <button
+                <motion.button
                   type="submit"
                   disabled={isLoading || !input.trim()}
                   className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg px-4 py-2 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95, rotate: 15 }}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <motion.svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    animate={isLoading ? { rotate: 360 } : {}}
+                    transition={isLoading ? { duration: 1, repeat: Infinity, ease: "linear" } : {}}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
-                </button>
+                  </motion.svg>
+                </motion.button>
               </div>
             </form>
           </motion.div>
