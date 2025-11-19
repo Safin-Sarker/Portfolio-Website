@@ -1,8 +1,11 @@
 import { OpenAIEmbeddings } from "@langchain/openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
-import { routeQuery, getCollectionNames } from "@/lib/queryRouter";
+import { routeQuery } from "@/lib/queryRouter";
 
+const VECTOR_DB_TYPE = process.env.VECTOR_DB_TYPE || "chromadb";
 const CHROMADB_URL = process.env.CHROMADB_URL || "http://127.0.0.1:8000";
+const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
+const PINECONE_INDEX = process.env.PINECONE_INDEX || "portfolio-knowledge";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const OPENAI_MODEL = "gpt-4o-mini";
 const OPENAI_EMBEDDING_MODEL = "text-embedding-ada-002";
@@ -17,21 +20,13 @@ export async function POST(req: Request) {
     const query: string = lastMessage.content;
 
     console.log(`📥 Received query: ${query}`);
-    console.log("🔗 Using Chroma URL:", CHROMADB_URL);
+    console.log("🔗 Using Vector DB:", VECTOR_DB_TYPE);
 
     // ===== STEP 1: Route the query to appropriate categories =====
     const categories = await routeQuery(query);
-    const collectionNames = getCollectionNames(categories);
+    console.log(`🎯 Routing to categories: ${categories.join(', ')}`);
 
-    console.log(`🎯 Routing to ${collectionNames.length} collection(s): ${collectionNames.join(', ')}`);
-
-    // ===== STEP 2: Initialize ChromaDB client =====
-    const { ChromaClient } = await import("chromadb");
-    const client = new ChromaClient({
-      path: CHROMADB_URL,
-    });
-
-    // ===== STEP 3: Initialize OpenAI embeddings =====
+    // ===== STEP 2: Initialize OpenAI embeddings =====
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: OPENAI_API_KEY,
       modelName: OPENAI_EMBEDDING_MODEL,
@@ -39,46 +34,90 @@ export async function POST(req: Request) {
 
     const queryEmbedding = await embeddings.embedQuery(query);
 
-    // ===== STEP 4: Query multiple collections in parallel =====
-    const allDocs: string[] = [];
-    const collectionResults = await Promise.allSettled(
-      collectionNames.map(async (collectionName) => {
-        try {
-          const collection = await client.getCollection({
-            name: collectionName,
-          });
+    // ===== STEP 3: Query vector database =====
+    let allDocs: string[] = [];
 
-          // Get more results for Experience and Education collections to ensure all items are included
-          const resultsCount = collectionName.includes('experience') ? 10
-                             : collectionName.includes('education') ? 10
-                             : 5;
+    if (VECTOR_DB_TYPE === "pinecone") {
+      // Query Pinecone
+      const { Pinecone } = await import("@pinecone-database/pinecone");
+      const pinecone = new Pinecone({
+        apiKey: PINECONE_API_KEY!,
+      });
 
-          const results = await collection.query({
-            queryEmbeddings: [queryEmbedding],
-            nResults: resultsCount,
-          });
+      const index = pinecone.index(PINECONE_INDEX);
 
-          const docs = results.documents?.[0] ?? [];
-          console.log(`   📄 ${collectionName}: Retrieved ${docs.length} documents`);
+      // Query with category filter (if specific categories detected)
+      const topK = 10;
+      const results = await index.namespace("").query({
+        vector: queryEmbedding,
+        topK,
+        includeMetadata: true,
+      });
 
-          return docs;
-        } catch (error) {
-          console.warn(`⚠️  Collection ${collectionName} not found or error:`, error);
-          return [];
+      // Extract text from metadata
+      allDocs = results.matches
+        ?.filter((match) => {
+          // Filter by category if specific categories detected
+          if (categories.length > 0 && categories[0] !== "General") {
+            return categories.some((cat) =>
+              match.metadata?.category?.toString().toLowerCase().includes(cat.toLowerCase())
+            );
+          }
+          return true;
+        })
+        .map((match) => match.metadata?.text as string)
+        .filter(Boolean) || [];
+
+      console.log(`📚 Retrieved ${allDocs.length} documents from Pinecone`);
+    } else {
+      // Query ChromaDB (fallback)
+      const { ChromaClient } = await import("chromadb");
+      const { getCollectionNames } = await import("@/lib/queryRouter");
+
+      const client = new ChromaClient({
+        path: CHROMADB_URL,
+      });
+
+      const collectionNames = getCollectionNames(categories);
+      console.log(`🎯 Querying ${collectionNames.length} collection(s): ${collectionNames.join(', ')}`);
+
+      const collectionResults = await Promise.allSettled(
+        collectionNames.map(async (collectionName) => {
+          try {
+            const collection = await client.getCollection({
+              name: collectionName,
+            });
+
+            const resultsCount = collectionName.includes('experience') ? 10
+                               : collectionName.includes('education') ? 10
+                               : 5;
+
+            const results = await collection.query({
+              queryEmbeddings: [queryEmbedding],
+              nResults: resultsCount,
+            });
+
+            const docs = results.documents?.[0] ?? [];
+            console.log(`   📄 ${collectionName}: Retrieved ${docs.length} documents`);
+
+            return docs;
+          } catch (error) {
+            console.warn(`⚠️  Collection ${collectionName} not found or error:`, error);
+            return [];
+          }
+        })
+      );
+
+      collectionResults.forEach((result) => {
+        if (result.status === "fulfilled" && result.value) {
+          allDocs.push(...result.value);
         }
-      })
-    );
+      });
 
-    // Collect all successful results
-    collectionResults.forEach((result) => {
-      if (result.status === "fulfilled" && result.value) {
-        allDocs.push(...result.value);
-      }
-    });
+      console.log(`📚 Total documents retrieved: ${allDocs.length}`);
+    }
 
     const context = allDocs.join("\n\n---\n\n");
-
-    console.log(`📚 Total documents retrieved: ${allDocs.length}`);
 
     // ===== STEP 5: Build system prompt with context =====
     const systemPrompt = `You are an AI assistant for MD Safin Sarker's portfolio website. Your role is to help visitors learn about Safin's background, skills, experience, and projects.
