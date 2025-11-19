@@ -1,8 +1,7 @@
 version: '3.8'
 
-# NOTE: Docker Compose is OPTIONAL for this project
-# For local development without Docker, see LOCAL-SETUP.md
-# This file is useful for production deployment or if you prefer containerized ChromaDB
+# Simplified Docker Compose for Pinecone deployment
+# No local vector database needed - uses Pinecone cloud
 
 services:
   # Next.js Application
@@ -14,35 +13,20 @@ services:
     ports:
       - "3000:3000"
     environment:
+      # OpenAI Configuration
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - CHROMADB_URL=http://chromadb:8000
-      - NEXT_PUBLIC_SITE_URL=http://localhost:3000
-    depends_on:
-      - chromadb
-    networks:
-      - portfolio-network
-    restart: unless-stopped
 
-  # ChromaDB Vector Database
-  chromadb:
-    image: chromadb/chroma:latest
-    container_name: portfolio-chromadb
-    ports:
-      - "8000:8000"
-    volumes:
-      - chromadb_data:/chroma/chroma
-    environment:
-      - IS_PERSISTENT=TRUE
-      - PERSIST_DIRECTORY=/chroma/chroma
-      - ANONYMIZED_TELEMETRY=FALSE
+      # Pinecone Configuration (cloud vector database)
+      - PINECONE_API_KEY=${PINECONE_API_KEY}
+      - PINECONE_INDEX=${PINECONE_INDEX:-portfolio-knowledge}
+
+      # Next.js Configuration
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+      - NODE_ENV=production
+    restart: unless-stopped
     networks:
       - portfolio-network
-    restart: unless-stopped
 
 networks:
   portfolio-network:
     driver: bridge
-
-volumes:
-  chromadb_data:
-    driver: local
