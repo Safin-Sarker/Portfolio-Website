@@ -198,17 +198,20 @@ export default function ChatBot() {
                             </p>
                           ),
                           ul: ({ children }) => (
-                            <ul className="list-disc list-inside space-y-1 mb-2">
+                            <ul className="list-disc list-outside ml-4 space-y-1 mb-2">
                               {children}
                             </ul>
                           ),
                           ol: ({ children }) => (
-                            <ol className="list-decimal list-inside space-y-1 mb-2">
+                            <ol className="list-decimal list-outside ml-4 space-y-1 mb-2">
                               {children}
                             </ol>
                           ),
                           li: ({ children }) => (
-                            <li className="ml-2">{children}</li>
+                            <li className="ml-2 pl-1">{children}</li>
+                          ),
+                          hr: () => (
+                            <hr className="my-6 border-t-2 border-gray-300 dark:border-gray-600" />
                           ),
                         }}
                       >

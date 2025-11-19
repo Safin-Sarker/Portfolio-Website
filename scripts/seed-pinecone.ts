@@ -119,7 +119,7 @@ async function seedPinecone() {
               chunkId: chunkId,
               title: chunk.title || category,
               section: chunk.section || '',
-              text: chunk.content.substring(0, 1000), // First 1000 chars for reference
+              text: chunk.content, // Full content for RAG context
             },
           });
 

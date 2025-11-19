@@ -35,11 +35,43 @@ export async function POST(req: Request) {
 
     const index = pinecone.index(PINECONE_INDEX);
 
-    const topK = 10;
+    // Detect query intent and apply category filtering
+    const queryLower = query.toLowerCase();
+    const isExperienceQuery = /\b(work|experience|job|position|career|employment|worked|company|companies)\b/i.test(query);
+    const isSkillsQuery = /\b(skill|skills|technology|technologies|proficient|expertise|tools)\b/i.test(query);
+    const isProjectsQuery = /\b(project|projects|built|developed|created|portfolio)\b/i.test(query);
+    const isEducationQuery = /\b(education|degree|university|study|studied|academic|master|bachelor)\b/i.test(query);
+
+    let queryFilter: any = undefined;
+    let topK = 10;
+
+    // Apply metadata filtering based on query intent
+    if (isExperienceQuery) {
+      queryFilter = { category: { $eq: "Experience" } };
+      topK = 20; // Get more chunks to ensure all experiences are retrieved
+      console.log("🔍 Filtering for Experience category");
+    } else if (isSkillsQuery) {
+      queryFilter = { category: { $eq: "Skills" } };
+      topK = 15;
+      console.log("🔍 Filtering for Skills category");
+    } else if (isProjectsQuery) {
+      queryFilter = { category: { $eq: "Projects" } };
+      topK = 15;
+      console.log("🔍 Filtering for Projects category");
+    } else if (isEducationQuery) {
+      queryFilter = { category: { $eq: "Education" } };
+      topK = 15;
+      console.log("🔍 Filtering for Education category");
+    } else {
+      topK = 15; // Default for mixed queries
+      console.log("🔍 No category filter applied (general query)");
+    }
+
     const results = await index.namespace("").query({
       vector: queryEmbedding,
       topK,
       includeMetadata: true,
+      filter: queryFilter,
     });
 
     // Extract text from metadata
@@ -48,6 +80,11 @@ export async function POST(req: Request) {
       .filter(Boolean) || [];
 
     console.log(`📚 Retrieved ${allDocs.length} documents from Pinecone`);
+
+    // Debug: Log what chunks were retrieved
+    results.matches?.forEach((match, idx) => {
+      console.log(`  [${idx + 1}] ${match.id} (score: ${match.score?.toFixed(4)})`);
+    });
 
     const context = allDocs.join("\n\n---\n\n");
 
@@ -85,15 +122,44 @@ RESPONSE FORMAT:
 - Start with a direct answer (1-2 sentences)
 
 - For WORK EXPERIENCE queries, use this exact format for each position:
-  **Company Name:** [company]
-  **Role:** [job title]
-  **Duration:** [dates]
-  **Responsibilities:** [key responsibilities in 1-2 sentences]
+
+  **[Number]. [Position Title]**
+  [Company Name] - ([Duration])
+  Responsibilities: [key responsibilities in 1-2 sentences]
+
+  ---
+
+  EXAMPLE FORMAT (follow this EXACTLY):
+
+  **1. AI Generated Illustrations Specialist**
+  Laerdal Medical - (October 2025 - Present)
+  Responsibilities: Fine-tuning LoRA and Stable Diffusion models for medical illustrations, developing interfaces, and optimizing AI workflows.
+
+  <blank line>
+  <blank line>
+  ---
+  <blank line>
+  <blank line>
+
+  **2. Intern - LoRA Training**
+  Laerdal Medical - (July 2025 - September 2025)
+  Responsibilities: Fine-tuned LoRA models and developed automated workflows.
+
+  <blank line>
+  <blank line>
+  ---
+  <blank line>
+  <blank line>
 
   IMPORTANT:
-  - Use markdown bold (**) for the labels only (Company Name:, Role:, Duration:, Responsibilities:)
+  - Position title should be bold (e.g., **1. AI Generated Illustrations Specialist**)
+  - Company name and duration on the next line, NOT bold, with duration in parentheses
+  - "Responsibilities:" should NOT be bold - just plain text
+  - CRITICAL SPACING: After each position's responsibilities, add TWO blank lines, then "---" separator, then TWO blank lines before the next position
+  - The separator line must have padding: blank lines both above and below it
   - List experiences in REVERSE CHRONOLOGICAL ORDER (most recent/current position first)
-  - Separate each position with a blank line
+  - Include ALL positions found in the context - do not skip any
+  - Even if a position seems less relevant, include it
 
 - For EDUCATION queries, use this exact format for each degree:
   **Degree:** [degree name]
