@@ -20,8 +20,15 @@
 - **OpenAI API**: GPT models integration and usage
 - **Ollama**: Local LLM deployment and management
 - **Azure AI Foundry**: Cloud-based AI development
-- **Claude AI**: Working with Anthropic's AI models
-- **GitHub Copilot**: AI-assisted development
+- **Claude Code Agent (Anthropic)**: Completed "Claude Code: A Highly Agentic Coding Assistant" course by Anthropic
+  - AI-assisted refactoring and code generation
+  - Automated pull request creation, review, and modification
+  - MCP Server integration for connecting external tools
+  - Git worktrees for running multiple Claude sessions in parallel
+  - Multi-branch development coordination
+  - Complex workflow automation with agentic AI
+  - Context-aware code improvements and debugging
+- **GitHub Copilot**: AI-assisted code generation and development
 - **ChatGPT**: Integration and API usage
 
 ### Machine Learning & Data Science
@@ -48,6 +55,14 @@
 - **SOLID Principles**: Object-oriented design best practices
 - **Design Patterns**: Repository, Factory, Dependency Injection
 - **RESTful API Design**: Best practices for API development
+
+### API Development & Integration
+- **RESTful API Integration**: Consuming and integrating third-party APIs
+- **API Authentication**: OAuth, JWT, API key management and security
+- **Webhook Implementation**: Event-driven integrations and real-time data processing
+- **API Documentation**: Swagger/OpenAPI specification and documentation best practices
+- **Rate Limiting & Error Handling**: Production-ready API consumption with proper error management
+- **API Testing**: Postman, integration testing, and API validation
 
 ### Other Backend Technologies
 - **Flask**: Python web framework for APIs
