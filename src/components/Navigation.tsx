@@ -39,7 +39,7 @@ export default function Navigation() {
           : 'bg-transparent'
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pr-16 md:pr-20">
         <div className="flex items-center justify-between h-20 md:h-24 py-2">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-3 group">
@@ -60,12 +60,12 @@ export default function Navigation() {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
             {navItems.map((item, index) => (
               <a
                 key={index}
                 href={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 relative group"
+                className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 relative group text-sm lg:text-base whitespace-nowrap"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-600 group-hover:w-full transition-all duration-300"></span>
@@ -73,7 +73,7 @@ export default function Navigation() {
             ))}
             <a
               href="mailto:Safinsarker1122@gmail.com"
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+              className="px-4 lg:px-6 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105 text-sm lg:text-base whitespace-nowrap"
             >
               Hire Me
             </a>
