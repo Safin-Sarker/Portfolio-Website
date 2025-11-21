@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
+import { useState, useEffect } from 'react';
 
 const stats = [
   {
@@ -43,32 +44,60 @@ export default function Stats() {
     threshold: 0.3,
   });
 
+  // Generate static positions to avoid hydration mismatch
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Predefined positions to avoid hydration mismatch
+  const dotPositions = [
+    { top: 10, left: 15 },
+    { top: 25, left: 85 },
+    { top: 45, left: 10 },
+    { top: 60, left: 90 },
+    { top: 75, left: 20 },
+    { top: 15, left: 70 },
+    { top: 35, left: 40 },
+    { top: 55, left: 65 },
+    { top: 80, left: 45 },
+    { top: 20, left: 50 },
+    { top: 90, left: 75 },
+    { top: 5, left: 30 },
+    { top: 70, left: 55 },
+    { top: 40, left: 95 },
+    { top: 85, left: 5 },
+  ];
+
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 via-blue-50/30 to-purple-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden transition-colors duration-300">
       {/* Subtle animated background patterns */}
-      <div className="absolute inset-0 opacity-20 dark:opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1.5 h-1.5 bg-blue-400 dark:bg-blue-500 rounded-full"
-              style={{
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                opacity: [0.2, 0.5, 0.2],
-              }}
-              transition={{
-                duration: 4 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
+      {mounted && (
+        <div className="absolute inset-0 opacity-20 dark:opacity-10">
+          <div className="absolute top-0 left-0 w-full h-full">
+            {dotPositions.map((pos, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1.5 h-1.5 bg-blue-400 dark:bg-blue-500 rounded-full"
+                style={{
+                  top: `${pos.top}%`,
+                  left: `${pos.left}%`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.2, 0.5, 0.2],
+                }}
+                transition={{
+                  duration: 4 + (i % 3),
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="container mx-auto px-4 relative z-10" ref={ref}>
         <motion.div

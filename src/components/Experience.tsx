@@ -44,7 +44,9 @@ const experiences = [
     location: 'Stavanger, Norway',
     period: '01/2025 - 06/2025',
     description: [
-      'Developing an AI-powered image generation system using Stable Diffusion and ComfyUI to enhance design workflows',
+      'Research and development of LoRA fine-tuning techniques for Stable Diffusion XL (SDXL)',
+      'Training custom LoRA models to generate Laerdal-style life illustrations for design assistance',
+      'Optimizing AI workflows using ComfyUI to enhance designer productivity and maintain brand consistency',
     ],
   },
   {
