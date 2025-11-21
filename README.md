@@ -2,7 +2,7 @@
 
 A modern portfolio website with an AI-powered chatbot assistant that answers questions about my experience, skills, and projects.
 
-**[Live Demo](#)** | **[Documentation](./CLAUDE.md)**
+**[Live Demo](#)**
 
 ---
 
