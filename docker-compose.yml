@@ -1,0 +1,24 @@
+# Simplified Docker Compose for Pinecone deployment
+# No local vector database needed - uses Pinecone cloud
+
+services:
+  # Next.js Application
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio-nextjs
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.local
+    environment:
+      # Next.js Configuration
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
