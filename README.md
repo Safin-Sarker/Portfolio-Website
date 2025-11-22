@@ -2,7 +2,7 @@
 
 A modern portfolio website with an AI-powered chatbot assistant that answers questions about my experience, skills, and projects.
 
-**[Live Demo](#)** | **[Documentation](./CLAUDE.md)**
+**[Live Demo](https://safin-portfolio-website.netlify.app/)**
 
 ---
 
@@ -40,18 +40,21 @@ This is a full-stack portfolio website built with Next.js and TypeScript, featur
 ## Tech Stack
 
 **Frontend:**
+
 - Next.js 14 (App Router)
 - TypeScript
 - Tailwind CSS
 - Framer Motion
 
 **Backend & AI:**
+
 - OpenAI API (GPT-4o-mini, embeddings)
 - Pinecone (Vector database)
 - LangChain.js
 - Vercel AI SDK
 
 **Deployment:**
+
 - Vercel / Railway / DigitalOcean
 
 ---
@@ -68,12 +71,14 @@ This is a full-stack portfolio website built with Next.js and TypeScript, featur
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/Safin-Sarker/Portfolio-Website.git
    cd Portfolio-Website
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -81,6 +86,7 @@ This is a full-stack portfolio website built with Next.js and TypeScript, featur
 3. **Set up environment variables**
 
    Create a `.env.local` file in the root directory:
+
    ```env
    # OpenAI Configuration
    OPENAI_API_KEY=sk-your-openai-api-key-here
@@ -95,12 +101,15 @@ This is a full-stack portfolio website built with Next.js and TypeScript, featur
    ```
 
 4. **Seed the vector database**
+
    ```bash
    npm run seed
    ```
+
    This generates embeddings from your portfolio content and stores them in Pinecone.
 
 5. **Run the development server**
+
    ```bash
    npm run dev
    ```
@@ -153,7 +162,7 @@ npm run seed      # Seed Pinecone with embeddings
 
 **MD Safin Sarker**
 
-- Portfolio: [Your Live URL]
+- Portfolio: [safin-portfolio-website.netlify.app](https://safin-portfolio-website.netlify.app/)
 - LinkedIn: [linkedin.com/in/safin-sarker](https://www.linkedin.com/in/safin-sarker/)
 - GitHub: [github.com/Safin-Sarker](https://github.com/Safin-Sarker)
 - Email: [Safinsarker1122@gmail.com](mailto:Safinsarker1122@gmail.com)

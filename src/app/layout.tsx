@@ -7,7 +7,7 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MD Safin Sarker | Full Stack Developer & AI Specialist",
+  title: "Safin Sarker- Portfolio",
   description: "Full Stack Developer with expertise in ASP.NET Core, React, Next.js, and AI/ML. Specializing in Generative AI and building scalable software solutions. Currently at Laerdal Medical, Norway.",
   keywords: [
     "MD Safin Sarker",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://safinsarker.com",
-    title: "MD Safin Sarker | Full Stack Developer & AI Specialist",
+    title: "Safin Sarker- Portfolio",
     description: "Full Stack Developer with expertise in ASP.NET Core, React, Next.js, and AI/ML. Specializing in Generative AI and building scalable software solutions.",
-    siteName: "MD Safin Sarker Portfolio",
+    siteName: "Safin Sarker- Portfolio",
     images: [
       {
         url: '/images/Safin .jpg',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MD Safin Sarker | Full Stack Developer & AI Specialist",
+    title: "Safin Sarker- Portfolio",
     description: "Full Stack Developer with expertise in ASP.NET Core, React, Next.js, and AI/ML. Specializing in Generative AI and building scalable software solutions.",
     images: ['/images/Safin .jpg'],
   },

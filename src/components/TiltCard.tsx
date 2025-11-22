@@ -55,7 +55,7 @@ export default function TiltCard({ children, className = '' }: TiltCardProps) {
       }}
       className={className}
     >
-      <div style={{ transform: 'translateZ(75px)', transformStyle: 'preserve-3d' }}>
+      <div style={{ transform: 'translateZ(75px)', transformStyle: 'preserve-3d', height: '100%', display: 'flex', flexDirection: 'column' }}>
         {children}
       </div>
     </motion.div>

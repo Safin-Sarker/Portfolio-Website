@@ -123,7 +123,7 @@ export default function ChatBot() {
               </div>
               <div className="flex-1">
                 <h3 className="font-semibold text-white">Portfolio Assistant</h3>
-                <p className="text-xs text-white/80">Ask me about Safin's experience</p>
+                <p className="text-xs text-white/80">Ask me anything about my background!</p>
               </div>
             </div>
 
@@ -137,33 +137,40 @@ export default function ChatBot() {
                   className="text-center text-gray-600 dark:text-gray-400 mt-8"
                 >
                   <div className="text-4xl mb-4">👋</div>
-                  <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Hi! I'm your portfolio assistant.</p>
-                  <p className="text-sm mb-4">I can answer questions about Safin's background. Try asking:</p>
+                  <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Hi! I'm Safin's AI assistant.</p>
+                  <p className="text-sm mb-4">I can help you learn about my experience, skills, and projects. Try asking:</p>
                   <div className="mt-4 space-y-2 text-sm">
-                    <motion.div
-                      whileHover={{ scale: 1.05, backgroundColor: 'rgba(59, 130, 246, 0.2)' }}
-                      className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg cursor-pointer hover:bg-blue-500/10 transition-colors"
-                    >
-                      💼 "What is his work experience?"
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05, backgroundColor: 'rgba(59, 130, 246, 0.2)' }}
-                      className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg cursor-pointer hover:bg-blue-500/10 transition-colors"
-                    >
-                      🛠️ "What technical skills does he have?"
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05, backgroundColor: 'rgba(59, 130, 246, 0.2)' }}
-                      className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg cursor-pointer hover:bg-blue-500/10 transition-colors"
-                    >
-                      📁 "Tell me about his projects"
-                    </motion.div>
-                    <motion.div
-                      whileHover={{ scale: 1.05, backgroundColor: 'rgba(59, 130, 246, 0.2)' }}
-                      className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg cursor-pointer hover:bg-blue-500/10 transition-colors"
-                    >
-                      🎓 "What is his education background?"
-                    </motion.div>
+                    {[
+                      { emoji: '💼', text: "What's your work experience?", delay: 0 },
+                      { emoji: '🛠️', text: "What are your technical skills?", delay: 0.1 },
+                      { emoji: '📁', text: "Show me your projects", delay: 0.2 },
+                      { emoji: '🎓', text: "Where did you study?", delay: 0.3 },
+                      { emoji: '📧', text: "How can I contact you?", delay: 0.4 },
+                    ].map((suggestion, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + suggestion.delay, duration: 0.3 }}
+                        whileHover={{
+                          scale: 1.05,
+                          backgroundColor: 'rgba(139, 92, 246, 0.2)',
+                          boxShadow: '0 4px 12px rgba(139, 92, 246, 0.3)'
+                        }}
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => {
+                          handleInputChange({ target: { value: suggestion.text } } as any);
+                          setTimeout(() => {
+                            const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+                            document.querySelector('form')?.dispatchEvent(submitEvent);
+                          }, 100);
+                        }}
+                        className="bg-gray-100 dark:bg-gray-800 p-3 rounded-lg cursor-pointer hover:bg-purple-500/10 transition-all duration-300 border border-transparent hover:border-purple-500/50"
+                      >
+                        <span className="mr-2">{suggestion.emoji}</span>
+                        <span className="text-gray-900 dark:text-gray-200">{suggestion.text}</span>
+                      </motion.div>
+                    ))}
                   </div>
                 </motion.div>
               )}
@@ -211,7 +218,10 @@ export default function ChatBot() {
                             <li className="ml-2 pl-1">{children}</li>
                           ),
                           hr: () => (
-                            <hr className="my-6 border-t-2 border-gray-300 dark:border-gray-600" />
+                            <div className="my-6">
+                              <hr className="border-t-2 border-purple-500/30 dark:border-purple-400/30" />
+                              <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent mt-1"></div>
+                            </div>
                           ),
                         }}
                       >

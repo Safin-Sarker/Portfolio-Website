@@ -145,6 +145,12 @@ RESPONSE FORMAT:
 
   ---
 
+  **3. Master's Thesis Student**
+  Laerdal Medical & University of Stavanger - (January 2025 - June 2025)
+  Responsibilities: Researched and implemented AI-powered image generation using Stable Diffusion and ComfyUI.
+
+  ---
+
   IMPORTANT:
   - Position title should be bold (e.g., **1. AI Generated Illustrations Specialist**)
   - Company name and duration on the next line, NOT bold, with duration in parentheses
@@ -153,7 +159,9 @@ RESPONSE FORMAT:
   - Use ONLY markdown formatting - NEVER use HTML tags like <br> or <blank line>
   - List experiences in REVERSE CHRONOLOGICAL ORDER (most recent/current position first)
   - Include ALL positions found in the context - do not skip any
-  - Even if a position seems less relevant, include it
+  - CRITICAL: Include thesis, research, and academic positions as work experience (e.g., "Master's Thesis Student")
+  - Even if a position seems less relevant or academic, include it
+  - NEVER filter out or skip positions - show everything from the context
 
 - For EDUCATION queries, use this exact format for each degree:
   **Degree:** [degree name]
@@ -163,11 +171,36 @@ RESPONSE FORMAT:
   **Specialization:** [if applicable]
   **Key Highlights:** [brief points]
 
+  ---
+
   IMPORTANT:
   - Use markdown bold (**) for the labels only
   - List degrees in REVERSE CHRONOLOGICAL ORDER (most recent/current degree first) - Master's BEFORE Bachelor's
   - Show ALL degrees from the context
-  - Separate each degree with a blank line
+  - Use markdown "---" separator between degrees with blank lines before and after
+  - This creates a visual divider for better readability
+
+- For PROJECT queries, ALWAYS include GitHub repository links in your response:
+  - When listing projects, format each as: **[Project Name]**: [brief description] - [GitHub link]
+  - When asked for "project links" or "repository links", provide a clean numbered list with clickable links
+  - ALWAYS extract and include the "Repository:" URLs from the context
+  - Make links clickable using markdown format: [Project Name](https://github.com/...) → GitHub
+  - Add "→ GitHub" or "(Click to view on GitHub)" after each link to make it clear the name is clickable
+  - If user asks for links specifically, prioritize showing the links over descriptions
+  - IMPORTANT: Include ALL projects found in the context, including:
+    * AI-Powered Portfolio Website
+    * Stable Diffusion ComfyUI
+    * Fletchy
+    * DevPost Blog
+    * Easy Inventory Management System
+    * Data Science Projects Collection
+    * JSON Serializer
+  - Do NOT skip any projects even if they seem less detailed
+
+  EXAMPLE FORMAT for project links:
+  1. [Fletchy](https://github.com/Safin-Sarker/Fletchy) → GitHub - E-commerce platform
+  2. [Portfolio Website](https://github.com/Safin-Sarker/Portfolio-Website) → GitHub - AI-powered portfolio
+  3. [Data Science Projects](https://github.com/Safin-Sarker/DataScience_project) → GitHub - ML and data analysis
 
 - For lists (skills, projects): use clean bullet points
 - Keep each point concise (1 sentence max)
