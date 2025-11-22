@@ -3,11 +3,20 @@
 ## AI & Machine Learning
 
 ### Core AI/ML Competencies
-- **RAG (Retrieval Augmented Generation)**: Expert in building knowledge-based AI systems with vector databases (ChromaDB) and embeddings
+- **RAG (Retrieval Augmented Generation)**: Expert in building production-ready knowledge-based AI systems with vector databases, embeddings, and semantic search
+  - Designed and implemented RAG chatbot for portfolio website using OpenAI and Pinecone
+  - Knowledge base chunking strategies for optimal retrieval accuracy
+  - Context-aware response generation with streaming capabilities
+  - Metadata filtering and namespace organization for efficient queries
+- **Vector Databases**:
+  - **Pinecone**: Production vector database with indexing, namespaces, metadata filtering, and serverless deployment
+  - **ChromaDB**: Local and self-hosted vector database for development and small-scale deployments
+  - Embeddings generation with OpenAI (text-embedding-ada-002)
+  - Semantic search implementation and optimization
+  - Vector similarity scoring and relevance ranking
 - **Agentic AI Systems**: Building intelligent agents with LangChain and LangGraph for autonomous decision-making
 - **LangChain Framework**: Orchestrating LLM applications, building chains, agents, and RAG pipelines
 - **Prompt Engineering**: Advanced techniques for optimal AI outputs and context management
-- **Vector Databases**: ChromaDB, embeddings, and semantic search implementation
 
 ### Generative AI
 - **Stable Diffusion**: Expert in fine-tuning and deploying diffusion models
@@ -17,7 +26,8 @@
 - **Serverless AI Deployment**: Deploying AI models in production
 
 ### LLM Integration & Tools
-- **OpenAI API**: GPT models integration and usage
+- **OpenAI API**: GPT models integration and usage (GPT-4, GPT-4o-mini, embeddings)
+- **Vercel AI SDK**: Streaming AI responses, real-time chat interfaces, and optimized AI integrations
 - **Ollama**: Local LLM deployment and management
 - **Azure AI Foundry**: Cloud-based AI development
 - **Claude Code Agent (Anthropic)**: Completed "Claude Code: A Highly Agentic Coding Assistant" course by Anthropic

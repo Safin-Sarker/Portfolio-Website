@@ -7,17 +7,28 @@ const projects = [
   {
     title: "Fletchy",
     description:
-      "A Modern E-commerce application using ASP.NET Core API, React, and AI. Features include product management, shopping cart, payment integration, and AI-powered recommendations.",
-    technologies: ["ASP.NET Core", "React", "AI", "Entity Framework", "Redux"],
+      "A modern e-commerce application built with .NET 9 and React TypeScript, combining traditional e-commerce with AI-powered shopping experiences. Currently under active development with payment integration and AI assistant features in progress.",
+    technologies: [
+      "ASP.NET Core Web API",
+      "React",
+      "TypeScript",
+      "Material UI",
+      "Redux Toolkit",
+      "Entity Framework",
+      "Docker",
+    ],
     github: "https://github.com/Safin-Sarker/Fletchy",
     featured: true,
+    ongoing: true,
   },
   {
     title: "Stable Diffusion ComfyUI",
     description:
       "Master's thesis project focused on developing an AI-powered image generation system using Stable Diffusion and ComfyUI to enhance design workflows for medical illustrations.",
     technologies: [
+      "Generative AI",
       "Stable Diffusion",
+      "SDXL",
       "ComfyUI",
       "Python",
       "LoRA",
@@ -102,7 +113,7 @@ export default function Projects() {
             software architecture
           </p>
 
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
             {projects.map((project, index) => (
               <motion.div
                 key={index}
@@ -110,16 +121,25 @@ export default function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.3 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`h-full ${project.featured ? "md:col-span-2 lg:col-span-1" : ""}`}
+                className={`h-full ${
+                  project.featured ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
               >
                 <TiltCard className="h-full bg-white dark:bg-gray-900 rounded-lg border border-gray-300 dark:border-gray-700 hover:border-purple-500 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 overflow-hidden group flex flex-col">
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex-shrink-0">
-                      {project.featured && (
-                        <div className="mb-3">
-                          <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
-                            Featured
-                          </span>
+                  <div className="p-6 flex flex-col flex-1">
+                    <div className="flex flex-col flex-1">
+                      {(project.featured || project.ongoing) && (
+                        <div className="mb-3 flex gap-2">
+                          {project.featured && (
+                            <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                              Featured
+                            </span>
+                          )}
+                          {project.ongoing && (
+                            <span className="bg-gradient-to-r from-green-500 to-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                              Ongoing
+                            </span>
+                          )}
                         </div>
                       )}
 
@@ -164,20 +184,20 @@ export default function Projects() {
                         {project.title}
                       </h3>
 
-                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-4">
                         {project.description}
                       </p>
-                    </div>
 
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      {project.technologies.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs border border-gray-300 dark:border-gray-700"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.technologies.map((tech, i) => (
+                          <span
+                            key={i}
+                            className="px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs border border-gray-300 dark:border-gray-700"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
 

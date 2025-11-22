@@ -2,6 +2,63 @@
 
 ## AI & Machine Learning Projects
 
+### AI-Powered Portfolio Website
+
+**Type:** Full-Stack AI Application with RAG
+**Status:** Live & Production Ready
+
+**Description:**
+A modern, responsive portfolio website featuring an intelligent RAG (Retrieval Augmented Generation) chatbot powered by OpenAI and Pinecone vector database. The chatbot provides context-aware answers about my professional background, skills, projects, and experience by retrieving relevant information from a knowledge base.
+
+**Key Features:**
+
+- **RAG Chatbot System**: Intelligent conversational AI that retrieves and generates accurate responses about my professional profile
+- **Vector Database Integration**: Pinecone vector database for semantic search and efficient information retrieval
+- **OpenAI Integration**: GPT-4o-mini for natural language understanding and generation, text-embedding-ada-002 for embeddings
+- **Streaming Responses**: Real-time streaming of AI-generated answers using Vercel AI SDK
+- **Dark Mode**: Smooth theme toggle with system preference detection
+- **Animated Sections**: Smooth scroll animations using Framer Motion
+- **Interactive Projects Gallery**: Showcase of projects with live demos and GitHub links
+- **Skills Visualization**: Categorized technical skills with interactive hover effects
+- **Experience Timeline**: Professional work history with scroll-triggered animations
+- **Fully Responsive**: Mobile-first design optimized for all devices
+- **Performance Optimized**: Fast page loads with Next.js 14 App Router and static generation
+
+**Technologies:**
+
+- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS, Framer Motion
+- **AI/ML**: OpenAI API (GPT-4o-mini, embeddings), Pinecone Vector Database, LangChain.js
+- **Backend**: Next.js API Routes, Vercel AI SDK for streaming
+- **Styling**: Tailwind CSS with custom animations and transitions
+- **Deployment**: Vercel (optimized for Next.js)
+
+**RAG Architecture:**
+
+1. **Knowledge Base**: Markdown files containing professional information (projects, skills, experience, education)
+2. **Embedding Generation**: OpenAI text-embedding-ada-002 creates vector embeddings of knowledge content
+3. **Vector Storage**: Pinecone stores embeddings with metadata for fast semantic search
+4. **Query Processing**: User questions are embedded and matched against stored vectors
+5. **Context Retrieval**: Top relevant chunks retrieved based on semantic similarity
+6. **Response Generation**: GPT-4o-mini generates natural answers using retrieved context
+7. **Streaming UI**: Responses stream in real-time for better user experience
+
+**Technical Highlights:**
+
+- Clean architecture with separation of concerns
+- Type-safe development with TypeScript
+- Optimized embedding chunking strategy for accurate retrieval
+- Metadata filtering for targeted information retrieval
+- Error handling and fallback responses
+- Mobile-responsive chat interface
+- Smooth animations without performance impact
+
+**Impact:**
+Demonstrates advanced full-stack development skills, AI integration expertise, and modern web development best practices. The RAG system provides an interactive way for recruiters and visitors to learn about my professional background.
+
+**Repository:** https://github.com/Safin-Sarker/Portfolio-Website
+
+---
+
 ### Stable Diffusion ComfyUI - Master's Thesis Project
 
 **Duration:** January 2025 - June 2025
@@ -30,7 +87,7 @@ A comprehensive master's thesis project focused on developing an AI-powered imag
 **Impact:**
 Successfully demonstrated how generative AI can be applied to medical education, improving the efficiency and quality of illustration creation workflows.
 
-**Repository:** https://github.com/Safin-Sarker/Stable-Diffusion-ComfyUI
+**Repository:** https://github.com/Safin-Sarker/Stable-Diffusion-ComfyUI-for-Laerdal-Style-Image-Generation-Master-s-Thesis-
 
 ---
 
@@ -73,36 +130,78 @@ A collection of data science and machine learning projects showcasing various te
 ### Fletchy - Modern E-commerce Platform
 
 **Type:** Full-Stack E-commerce Application
+**Status:** 🔄 Under Active Development
 
 **Description:**
-A comprehensive modern e-commerce application built with ASP.NET Core API backend and React frontend, featuring AI-powered recommendations and complete shopping functionality.
+A modern e-commerce application built with .NET 9 (C#) backend and React (TypeScript) frontend, combining traditional e-commerce functionality with AI-powered shopping experiences using intelligent agents. This project serves as both a technical portfolio and a demonstration of full-stack development with AI integration.
 
-**Key Features:**
+**Current Development Status:**
 
-- **Product Management**: Full CRUD operations for products and categories
-- **Shopping Cart**: Real-time cart management and updates
-- **Payment Integration**: Secure payment processing
-- **AI Recommendations**: Intelligent product suggestions using machine learning
-- **User Authentication**: Secure user registration and login
-- **Order Management**: Complete order tracking and history
-- **Admin Dashboard**: Comprehensive admin panel for management
-- **Responsive Design**: Mobile-first responsive interface
+✅ **Completed:**
+- Modern e-commerce UI with React + TypeScript + Material UI
+- Backend REST API using ASP.NET Core 9 Web API
+- Entity Framework Core for data access
+- SQL Server / SQLite database integration
+- Authentication & Authorization with ASP.NET Identity
+- Product Management with pagination and filtering
+- Shopping Cart functionality
+- Docker containerization support
+
+🔄 **In Progress:**
+- Payment Integration (Stripe / PayPal)
+- Role-Based Authorization (Admin & Customer roles)
+- AI Shopping Assistant architecture design
+
+⏳ **Planned Features:**
+- AI Shopping Assistant with LLM-based product recommendations
+- Real-time notifications using SignalR
+- Personalized recommendation system with embeddings
+- Admin analytics dashboard
+- Multi-language and multi-currency support
 
 **Technologies:**
 
-- **Backend**: ASP.NET Core Web API, C#, Entity Framework
-- **Frontend**: React, Redux, TypeScript
-- **Database**: Microsoft SQL Server
-- **AI/ML**: Custom recommendation engine
-- **Authentication**: JWT-based authentication
-- **Styling**: Modern CSS, Responsive Design
+**Frontend:**
+- React with TypeScript
+- Vite build tool
+- Material UI for modern responsive design
+- Redux Toolkit + RTK Query for state management
+- Zod for form validation
+- React Router for navigation
+
+**Backend:**
+- ASP.NET Core 9 Web API (RESTful architecture)
+- C#, Entity Framework Core
+- ASP.NET Identity for authentication
+- SQLite (development) → SQL Server (production)
+- Docker for containerization
+
+**AI & Future Integration:**
+- Python microservice for AI agent communication
+- OpenAI / Hugging Face LLM integration
+- Agentic AI for intelligent shopping assistance
+- Semantic search and chat-based product discovery
 
 **Architecture:**
 
-- Clean Architecture principles
+- Clean client-server architecture
 - RESTful API design
-- Repository pattern
-- Dependency injection
+- Repository pattern with Dependency Injection
+- Microservices-ready design (AI service separation)
+- Containerized deployment with Docker
+
+**Development Roadmap:**
+
+**Phase 1-3:** ✅ Core e-commerce foundation (authentication, product management, cart)
+**Phase 4:** 🔄 Payment integration (Stripe/PayPal)
+**Phase 5-6:** ⏳ Role-based authorization, real-time notifications
+**Phase 7:** ⏳ AI Shopping Assistant integration
+**Phase 8-9:** ⏳ Cloud deployment, testing, optimization
+
+**Current Focus:**
+- Finalizing payment workflow
+- Preparing role-based authorization
+- Early AI assistant architecture design
 
 **Repository:** https://github.com/Safin-Sarker/Fletchy
 
