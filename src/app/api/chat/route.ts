@@ -171,6 +171,7 @@ RESPONSE FORMAT:
   - If user asks for links specifically, prioritize showing the links over descriptions
   - IMPORTANT: Include ALL projects found in the context, including:
     * AI-Powered Portfolio Website
+    * DocChat - Advanced RAG with Knowledge Graph
     * Stable Diffusion ComfyUI
     * Fletchy
     * DevPost Blog
