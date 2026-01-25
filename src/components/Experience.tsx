@@ -10,9 +10,10 @@ const experiences = [
     location: 'Stavanger, Norway',
     period: '10/2025 - Ongoing',
     description: [
-      'Fine-tuning LoRA and Stable Diffusion models for clinically relevant illustrations',
+      'Fine-tuning LoRA and Stable Diffusion models for clinically relevant medical illustrations, optimizing AI workflows and prompt engineering',
       'Developing a React and Flask-based interface connected to a Dockerized ComfyUI endpoint in a serverless setup',
-      'Optimizing AI workflows and prompt engineering for consistency and quality',
+      'Building a Copilot agent to integrate image generation tool into Microsoft 365 apps using Copilot Studio and Power Platform',
+      'Integrating REST APIs and MCP servers for automated tools, workflows, and seamless agent capabilities',
     ],
     current: true,
   },

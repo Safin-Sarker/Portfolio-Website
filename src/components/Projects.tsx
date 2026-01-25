@@ -55,6 +55,24 @@ const projects = [
     featured: true,
   },
   {
+    title: "DocChat - Advanced RAG",
+    description:
+      "A multimodal document intelligence platform combining hybrid RAG pipeline (semantic search, BM25, graph traversal), interactive knowledge graph visualization, and real-time chat for intelligent document Q&A.",
+    technologies: [
+      "FastAPI",
+      "React 19",
+      "TypeScript",
+      "OpenAI GPT-4",
+      "Pinecone",
+      "Neo4j",
+      "LangChain",
+      "Docker",
+    ],
+    github: "https://github.com/Safin-Sarker/DocChat",
+    featured: true,
+    ongoing: true,
+  },
+  {
     title: "DevPost Blog Website",
     description:
       "A comprehensive blogging platform built with ASP.NET Core MVC, featuring user authentication, post management, comments, and a clean, modern interface.",

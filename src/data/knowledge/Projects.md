@@ -59,6 +59,62 @@ Demonstrates advanced full-stack development skills, AI integration expertise, a
 
 ---
 
+### DocChat - Advanced RAG with Knowledge Graph
+
+**Type:** Multimodal Document Intelligence Platform
+**Status:** 🔄 Under Active Development
+
+**Description:**
+An advanced Retrieval-Augmented Generation (RAG) system that combines multimodal document processing, hybrid search retrieval, and interactive knowledge graph visualization for intelligent document question-answering. Users can upload documents (PDFs, images, text files) and interact with them through natural language queries, receiving accurate, context-aware responses.
+
+**Key Features:**
+
+- **Multimodal Document Processing**: Extract and process text, tables, and images from PDFs and documents
+- **Hybrid RAG Pipeline**: Combines semantic search, BM25, and graph-based retrieval for superior accuracy
+- **Knowledge Graph Visualization**: Interactive vis-network graph showing entity relationships
+- **Real-time Chat Interface**: Stream-like chat experience with source citations
+- **Entity Extraction**: Automatic extraction of people, organizations, and concepts from documents
+- **Hierarchical Chunking**: Parent-child chunking strategy for better context preservation
+- **OpenAI Reranking**: GPT-powered reranking for optimal result ordering
+- **Persistent Sessions**: Chat history and document context preserved across sessions
+- **Docker Support**: One-command infrastructure setup with Docker Compose
+- **RESTful API**: Well-documented API with Swagger UI
+
+**Technologies:**
+
+**Backend:**
+- Python 3.11+, FastAPI, Uvicorn
+- LangChain, LlamaIndex
+- OpenAI GPT-4 (LLM & Embeddings)
+- Pinecone (Vector Database)
+- Neo4j (Graph Database)
+- Sentence Transformers, Pydantic
+
+**Frontend:**
+- React 19, TypeScript, Vite
+- TailwindCSS, shadcn/ui
+- vis-network (Graph Visualization)
+- TanStack Query, Zustand, Axios
+
+**Infrastructure:**
+- Docker, Docker Compose
+- Neo4j 5.16 Container
+
+**Architecture Highlights:**
+
+1. **Document Processing**: Uploads are processed to extract text, tables, and images
+2. **Hybrid Retrieval**: Queries leverage semantic search (Pinecone), BM25, and graph traversal (Neo4j)
+3. **Entity Extraction**: Automatic identification of entities and relationships stored in knowledge graph
+4. **Response Generation**: Retrieved context passed to GPT-4 for accurate, cited responses
+5. **Interactive Visualization**: Entity relationships displayed in real-time graph interface
+
+**Impact:**
+Demonstrates advanced RAG architecture skills, graph database integration, and modern full-stack development. The hybrid retrieval approach significantly improves answer accuracy compared to traditional semantic-only search.
+
+**Repository:** https://github.com/Safin-Sarker/DocChat
+
+---
+
 ### Stable Diffusion ComfyUI - Master's Thesis Project
 
 **Duration:** January 2025 - June 2025
@@ -326,22 +382,22 @@ A custom JSON serializer implementation in C# using advanced programming techniq
 
 ## Project Summary Statistics
 
-**Total Projects:** 6+ major projects
-**Technologies Used:** 20+ different technologies
+**Total Projects:** 7+ major projects
+**Technologies Used:** 25+ different technologies
 **Lines of Code:** 50,000+ across all projects
 **GitHub Stars:** Growing open-source presence
 
 **Project Categories:**
 
-- AI/ML: 2 projects
+- AI/ML & RAG: 3 projects
 - Full-Stack Web: 3 projects
 - Technical Deep-Dive: 1 project
 - Data Science: Multiple notebooks
 
 **Most Used Technologies:**
 
-- Backend: ASP.NET Core, Python, Flask
-- Frontend: React, JavaScript, Bootstrap
-- Database: MSSQL, Entity Framework
-- AI/ML: Stable Diffusion, Python, Machine Learning
+- Backend: ASP.NET Core, Python, FastAPI, Flask
+- Frontend: React, TypeScript, JavaScript, Bootstrap
+- Database: MSSQL, Entity Framework, Pinecone, Neo4j
+- AI/ML: OpenAI GPT-4, LangChain, LlamaIndex, Stable Diffusion, RAG
 - DevOps: Docker, Git, CI/CD
