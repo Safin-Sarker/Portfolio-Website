@@ -13,9 +13,11 @@ export const portfolioKnowledge = [
     id: 'current-role',
     category: 'Experience',
     content: `Current Role: AI Generated Illustrations Specialist at Laerdal Medical (10/2025 - Ongoing) in Stavanger, Norway.
-    Responsibilities include: Fine-tuning LoRA and Stable Diffusion models for clinically relevant illustrations,
-    developing a React and Flask-based interface connected to a Dockerized ComfyUI endpoint in a serverless setup,
-    and optimizing AI workflows and prompt engineering for consistency and quality.`,
+    Responsibilities:
+    - Fine-tuning LoRA and Stable Diffusion models for clinically relevant medical illustrations, optimizing AI workflows and prompt engineering for consistency and quality
+    - Developing a React and Flask-based interface connected to a Dockerized ComfyUI endpoint in a serverless setup
+    - Building a Copilot agent to integrate image generation tool into Microsoft 365 apps using Copilot Studio and Power Platform
+    - Integrating REST APIs and MCP servers for automated tools, workflows, and seamless agent capabilities`,
   },
   {
     id: 'internship-laerdal',
@@ -116,6 +118,17 @@ export const portfolioKnowledge = [
     content: `Data Science Projects - Collection of data science and machine learning projects using Jupyter notebooks,
     including data analysis, visualization, and predictive modeling. Technologies: Python, Jupyter, Pandas, NumPy,
     Scikit-learn. GitHub: https://github.com/Safin-Sarker/DataScience_project`,
+  },
+  {
+    id: 'project-docchat',
+    category: 'Projects',
+    content: `DocChat - Advanced RAG with Knowledge Graph. A multimodal document intelligence platform that combines
+    hybrid RAG pipeline (semantic search, BM25, graph-based retrieval), interactive knowledge graph visualization,
+    and real-time chat interface for intelligent document Q&A. Key features include: multimodal document processing
+    (PDFs, images, text), automatic entity extraction, hierarchical chunking, OpenAI-powered reranking, and persistent
+    sessions. Technologies: FastAPI, React 19, TypeScript, OpenAI GPT-4, Pinecone, Neo4j, LangChain, LlamaIndex,
+    vis-network, TailwindCSS, Docker. Currently under active development.
+    GitHub: https://github.com/Safin-Sarker/DocChat`,
   },
   {
     id: 'education-masters',

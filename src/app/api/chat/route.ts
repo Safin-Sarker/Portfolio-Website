@@ -1,12 +1,16 @@
 import { OpenAIEmbeddings } from "@langchain/openai";
-import { OpenAIStream, StreamingTextResponse } from "ai";
 import { Pinecone } from "@pinecone-database/pinecone";
+import OpenAI from "openai";
 
 const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
 const PINECONE_INDEX = process.env.PINECONE_INDEX || "portfolio-knowledge";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const OPENAI_MODEL = "gpt-4o-mini";
 const OPENAI_EMBEDDING_MODEL = "text-embedding-ada-002";
+
+const openaiClient = new OpenAI({
+  apiKey: OPENAI_API_KEY,
+});
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -127,29 +131,7 @@ RESPONSE FORMAT:
 
   **[Number]. [Position Title]**
   [Company Name] - ([Duration])
-  Responsibilities: [key responsibilities in 1-2 sentences]
-
-  ---
-
-  EXAMPLE FORMAT (follow this EXACTLY):
-
-  **1. AI Generated Illustrations Specialist**
-  Laerdal Medical - (October 2025 - Present)
-  Responsibilities: Fine-tuning LoRA and Stable Diffusion models for medical illustrations, developing interfaces, and optimizing AI workflows.
-
-  ---
-
-  **2. Intern - LoRA Training**
-  Laerdal Medical - (July 2025 - September 2025)
-  Responsibilities: Fine-tuned LoRA models and developed automated workflows.
-
-  ---
-
-  **3. Master's Thesis Student**
-  Laerdal Medical & University of Stavanger - (January 2025 - June 2025)
-  Responsibilities: Researched and implemented AI-powered image generation using Stable Diffusion and ComfyUI.
-
-  ---
+  Responsibilities: [Key responsibilities covering all major work areas mentioned in context]
 
   IMPORTANT:
   - Position title should be bold (e.g., **1. AI Generated Illustrations Specialist**)
@@ -211,12 +193,7 @@ Remember: Professional, concise, to-the-point. Quality over quantity.`;
     // ===== STEP 6: Generate response with OpenAI =====
     console.log(`🤖 Generating response with ${OPENAI_MODEL}...`);
 
-    const { OpenAI } = await import("openai");
-    const openai = new OpenAI({
-      apiKey: OPENAI_API_KEY,
-    });
-
-    const response = await openai.chat.completions.create({
+    const response = await openaiClient.chat.completions.create({
       model: OPENAI_MODEL,
       stream: true,
       messages: [
@@ -225,7 +202,7 @@ Remember: Professional, concise, to-the-point. Quality over quantity.`;
           content: systemPrompt,
         },
         ...messages.slice(0, -1).map((msg: any) => ({
-          role: msg.role,
+          role: msg.role as "user" | "assistant",
           content: msg.content,
         })),
         {
@@ -236,9 +213,26 @@ Remember: Professional, concise, to-the-point. Quality over quantity.`;
       temperature: 0.7,
     });
 
-    // Use OpenAIStream from ai package for proper streaming
-    const stream = OpenAIStream(response);
-    return new StreamingTextResponse(stream);
+    // Create a ReadableStream for the response
+    const stream = new ReadableStream({
+      async start(controller) {
+        const encoder = new TextEncoder();
+        for await (const chunk of response) {
+          const content = chunk.choices[0]?.delta?.content;
+          if (content) {
+            // Format for Vercel AI SDK data stream protocol
+            controller.enqueue(encoder.encode(`0:${JSON.stringify(content)}\n`));
+          }
+        }
+        controller.close();
+      },
+    });
+
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+      },
+    });
   } catch (error) {
     console.error("❌ Error in chat API:", error);
     return new Response(
