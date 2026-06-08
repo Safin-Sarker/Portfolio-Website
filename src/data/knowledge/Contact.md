@@ -4,7 +4,7 @@
 
 **Name:** MD Safin Sarker
 **Professional Title:** Full Stack Developer & AI Specialist
-**Current Location:** Stavanger, Norway
+**Current Location:** Sandnes, Norway
 
 ---
 
@@ -28,10 +28,10 @@
 
 ### Physical Address
 
-**Street Address:** Rosenberggata 67
-**City:** Stavanger
+**Street Address:** Langgata 2A
+**City:** Sandnes
 **Country:** Norway
-**Postal Code:** Available upon request
+**Postal Code:** 4306
 
 ---
 

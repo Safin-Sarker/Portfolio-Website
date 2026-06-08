@@ -14,9 +14,31 @@
   - Embeddings generation with OpenAI (text-embedding-ada-002)
   - Semantic search implementation and optimization
   - Vector similarity scoring and relevance ranking
-- **Agentic AI Systems**: Building intelligent agents with LangChain and LangGraph for autonomous decision-making
+- **Spec-Driven Development (SDD)**: AI-assisted development methodology using specifications as the source of truth
+  - Writing and managing specs with Git Spec for version-controlled requirement definitions
+  - Using OpenAI Spec to generate, validate, and iterate on implementation from specs
+  - Adopting and customizing SDD workflows to fit project and team needs
+  - Bridging the gap between requirements and code through structured AI collaboration
 - **LangChain Framework**: Orchestrating LLM applications, building chains, agents, and RAG pipelines
 - **Prompt Engineering**: Advanced techniques for optimal AI outputs and context management
+
+### Agent Development
+- **Azure AI Foundry Agents**: End-to-end agent development on Azure
+  - Creating and configuring agents with Azure OpenAI endpoints
+  - Agent deployment and lifecycle management on Azure
+  - Integrating custom tools and external tools into agents
+  - Using MCP (Model Context Protocol) tools within agent workflows
+  - Connecting agents to data sources, APIs, and third-party services
+- **Microsoft Copilot Studio Agents**: Building enterprise-grade agents with the Power Platform
+  - Designing and building agents in Copilot Studio from scratch
+  - Creating Power Automate flows to handle agent actions and business logic
+  - Integrating agents into the Microsoft Copilot interface
+  - Deploying agents to Microsoft Teams for end-user access
+  - Connecting agents to external APIs, SharePoint, and Microsoft 365 services
+- **Agentic AI Systems (LangChain / LangGraph)**: Building autonomous agents with tool use, memory, and multi-step reasoning
+- **Custom Tool Development**: Building custom tools and MCP tools that agents can invoke
+- **External Tool Integration**: Connecting agents to external APIs, databases, and third-party services
+- **Agent Deployment**: Deploying agents to production environments (Azure, Teams, Copilot interface)
 
 ### Generative AI
 - **Stable Diffusion**: Expert in fine-tuning and deploying diffusion models
@@ -29,7 +51,7 @@
 - **OpenAI API**: GPT models integration and usage (GPT-4, GPT-4o-mini, embeddings)
 - **Vercel AI SDK**: Streaming AI responses, real-time chat interfaces, and optimized AI integrations
 - **Ollama**: Local LLM deployment and management
-- **Azure AI Foundry**: Cloud-based AI development
+- **Azure AI Foundry**: Cloud-based AI development platform — project creation, interactive chatbots, Azure OpenAI endpoint integration (see Agent Development section for agent-specific skills)
 - **Claude Code Agent (Anthropic)**: Completed "Claude Code: A Highly Agentic Coding Assistant" course by Anthropic
   - AI-assisted refactoring and code generation
   - Automated pull request creation, review, and modification
@@ -38,6 +60,7 @@
   - Multi-branch development coordination
   - Complex workflow automation with agentic AI
   - Context-aware code improvements and debugging
+- **Microsoft Copilot Studio & Power Platform**: Enterprise agent platform (see Agent Development section for agent-specific skills)
 - **GitHub Copilot**: AI-assisted code generation and development
 - **ChatGPT**: Integration and API usage
 

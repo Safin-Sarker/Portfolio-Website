@@ -2,10 +2,31 @@
 
 ## Current Position
 
+### Software Developer
+
+**NetPower** | Sandnes, Norway
+**April 2026 - Present**
+
+**Role & Responsibilities:**
+
+- Develop full-stack features using React, .NET, and Python.
+- Collaborate with project managers, customers, architects, and stakeholders to clarify requirements.
+- Take ownership of tasks using technical tickets, cross-team coordination, and AI-assisted development with Claude.
+
+**Key Technologies:**
+
+- React, .NET, Python
+- Agile, Technical Tickets, Cross-team Collaboration
+- AI-assisted Development
+
+---
+
+## Previous Positions
+
 ### AI Generated Illustrations Specialist
 
 **Laerdal Medical** | Stavanger, Norway
-**October 2025 - Present**
+**October 2025 - March 2026**
 
 **Role & Responsibilities:**
 
@@ -36,8 +57,6 @@ _Copilot Integration & Automation:_
 - Automation Tools, Agent Development
 
 ---
-
-## Previous Positions
 
 ### Intern - LoRA Training, Generative Models & Workflow Development
 

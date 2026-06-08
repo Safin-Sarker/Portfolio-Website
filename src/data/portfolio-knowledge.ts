@@ -6,15 +6,24 @@ export const portfolioKnowledge = [
     content: `MD Safin Sarker is a Full Stack Developer with a solid foundation in both front-end and back-end development,
     and growing experience in applying AI techniques to real-world problems. He is passionate about building scalable,
     high-quality software solutions, with a continuous focus on learning, DevOps practices, and emerging technologies
-    like machine learning and generative AI. He is based in Stavanger, Norway, and is currently working as an AI Generated
-    Illustrations Specialist at Laerdal Medical.`,
+    like machine learning and generative AI. He is based in Norway, and is currently working as a Software Developer
+    at NetPower in Sandnes, Norway.`,
   },
   {
     id: 'current-role',
     category: 'Experience',
-    content: `Current Role: AI Generated Illustrations Specialist at Laerdal Medical (10/2025 - Ongoing) in Stavanger, Norway.
+    content: `Current Role: Software Developer at NetPower (06/2026 - Ongoing) in Sandnes, Norway.
     Responsibilities:
-    - Fine-tuning LoRA and Stable Diffusion models for clinically relevant medical illustrations, optimizing AI workflows and prompt engineering for consistency and quality
+    - Develop full-stack features using React, .NET, and Python.
+    - Collaborate with project managers, customers, architects, and stakeholders to clarify requirements.
+    - Take ownership of tasks using technical tickets, cross-team coordination, and AI-assisted development with Claude.`,
+  },
+  {
+    id: 'laerdal-ai-specialist',
+    category: 'Experience',
+    content: `Previous Role: AI Generated Illustrations Specialist at Laerdal Medical (10/2025 – 05/2026) in Stavanger, Norway.
+    Responsibilities:
+    - Fine-tuning LoRA and Stable Diffusion models for clinically relevant medical illustrations, optimizing AI workflows and prompt engineering
     - Developing a React and Flask-based interface connected to a Dockerized ComfyUI endpoint in a serverless setup
     - Building a Copilot agent to integrate image generation tool into Microsoft 365 apps using Copilot Studio and Power Platform
     - Integrating REST APIs and MCP servers for automated tools, workflows, and seamless agent capabilities`,
@@ -158,7 +167,7 @@ export const portfolioKnowledge = [
     id: 'contact',
     category: 'Contact',
     content: `Contact Information: Email - Safinsarker1122@gmail.com, Phone - +47 462 74 885,
-    Location - Rosenberggata 67, Stavanger, Norway. LinkedIn: https://www.linkedin.com/in/safin-sarker/,
+    Location - Sandnes, Norway. LinkedIn: https://www.linkedin.com/in/safin-sarker/,
     GitHub: https://github.com/Safin-Sarker`,
   },
   {

@@ -85,10 +85,10 @@ export default function About() {
                       Current Role
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400">
-                      AI Generated Illustrations Specialist
+                      Software Developer
                     </p>
                     <p className="text-sm text-purple-400">
-                      Laerdal Medical, Norway
+                      NetPower, Sandnes, Norway
                     </p>
                   </div>
                 </div>
@@ -165,9 +165,9 @@ export default function About() {
                       Location
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400">
-                      Rosenberggata 67
+                      Langgata 2A, 4306
                     </p>
-                    <p className="text-sm text-purple-400">Stavanger, Norway</p>
+                    <p className="text-sm text-purple-400">Sandnes, Norway</p>
                   </div>
                 </div>
               </div>

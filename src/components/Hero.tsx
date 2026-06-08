@@ -63,7 +63,7 @@ export default function Hero() {
             className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto"
           >
             Building scalable, high-quality software solutions with expertise in Full Stack Development,
-            AI/ML, and DevOps. Currently specializing in Generative AI at Laerdal Medical.
+            AI/ML, and DevOps. Currently working as a Software Developer at NetPower, Norway.
           </motion.p>
 
           <motion.div

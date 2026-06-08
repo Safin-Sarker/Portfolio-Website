@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "Python",
     "TypeScript",
     "Norway Developer",
-    "Stavanger",
+    "Sandnes",
     "Portfolio",
     "Software Engineer",
     "Generative AI",

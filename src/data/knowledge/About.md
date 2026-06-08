@@ -3,7 +3,7 @@
 MD Safin Sarker is a Full Stack Developer with a solid foundation in both front-end and back-end development, and growing experience in applying AI techniques to real-world problems. He is passionate about building scalable, high-quality software solutions, with a continuous focus on learning, DevOps practices, and emerging technologies like machine learning and generative AI.
 
 ## Current Location
-Based in Stavanger, Norway
+Based in Sandnes, Norway
 
 ## Professional Summary
 Full Stack Developer and AI Engineer with expertise in building intelligent, scalable software solutions. Specialized in generative AI technologies including Stable Diffusion, LoRA fine-tuning, and RAG (Retrieval Augmented Generation) systems, while maintaining strong full-stack development capabilities across modern web technologies and cloud platforms.

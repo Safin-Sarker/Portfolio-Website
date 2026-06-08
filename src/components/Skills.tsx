@@ -22,6 +22,15 @@ const aiSkillCategories = [
     skills: ['Azure AI Foundry', 'Claude AI', 'GitHub Copilot', 'ChatGPT', 'Model Training & Optimization'],
   },
   {
+    title: 'Agent Development & Deployment',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18" />
+      </svg>
+    ),
+    skills: ['Azure AI Foundry Agents', 'Microsoft Copilot Studio', 'Power Automate (Agent Actions)', 'MCP Tools (Model Context Protocol)', 'Custom Tool Development', 'Teams Deployment', 'LangChain / LangGraph Agents'],
+  },
+  {
     title: 'Programming for AI',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +55,7 @@ const aiSkillCategories = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
       </svg>
     ),
-    skills: ['Claude Code Agent', 'Git Worktrees (Parallel Sessions)', 'Automated PR Management', 'AI-Powered Refactoring', 'MCP Server Integration'],
+    skills: ['Claude Code Agent', 'Spec-Driven Development (SDD)', 'Git Worktrees (Parallel Sessions)', 'Automated PR Management', 'AI-Powered Refactoring', 'MCP Server Integration'],
   },
 ];
 

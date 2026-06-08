@@ -5,17 +5,28 @@ import { useRef } from 'react';
 
 const experiences = [
   {
+    title: 'Software Developer',
+    company: 'NetPower',
+    location: 'Sandnes, Norway',
+    period: '06/2026 - Ongoing',
+    description: [
+      'Develop full-stack features using React, .NET, and Python.',
+      'Collaborate with project managers, customers, architects, and stakeholders to clarify requirements.',
+      'Take ownership of tasks using technical tickets, cross-team coordination, and AI-assisted development with Claude.',
+    ],
+    current: true,
+  },
+  {
     title: 'AI Generated Illustrations Specialist',
     company: 'Laerdal Medical',
     location: 'Stavanger, Norway',
-    period: '10/2025 - Ongoing',
+    period: '10/2025 – 05/2026',
     description: [
       'Fine-tuning LoRA and Stable Diffusion models for clinically relevant medical illustrations, optimizing AI workflows and prompt engineering',
       'Developing a React and Flask-based interface connected to a Dockerized ComfyUI endpoint in a serverless setup',
       'Building a Copilot agent to integrate image generation tool into Microsoft 365 apps using Copilot Studio and Power Platform',
       'Integrating REST APIs and MCP servers for automated tools, workflows, and seamless agent capabilities',
     ],
-    current: true,
   },
   {
     title: 'Intern – LoRa Training, Generative Models & Workflow Development',
@@ -81,12 +92,12 @@ export default function Experience() {
   const timelineHeight = useTransform(scrollYProgress, [0, 0.8], ["0%", "100%"]);
 
   return (
-    <section id="experience" ref={containerRef} className="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+    <section id="experience" ref={containerRef} className="relative py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: false, amount: 0.05 }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center">
